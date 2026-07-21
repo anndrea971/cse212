@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 /// <summary>
 /// Defines a maze using a dictionary. The dictionary is provided by the
 /// user when the Maze object is created. The dictionary will contain the
@@ -26,13 +29,22 @@ public class Maze
     }
 
     // TODO Problem 4 - ADD YOUR CODE HERE
+
     /// <summary>
     /// Check to see if you can move left.  If you can, then move.  If you
     /// can't move, throw an InvalidOperationException with the message "Can't go that way!".
     /// </summary>
     public void MoveLeft()
     {
-        // FILL IN CODE
+        // Index 0 represents Left
+        if (_mazeMap[(_currX, _currY)][0]) 
+        {
+            _currX--; // Move left
+        }
+        else
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
     }
 
     /// <summary>
@@ -41,7 +53,15 @@ public class Maze
     /// </summary>
     public void MoveRight()
     {
-        // FILL IN CODE
+        // Index 1 represents Right
+        if (_mazeMap[(_currX, _currY)][1]) 
+        {
+            _currX++; // Move right
+        }
+        else
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
     }
 
     /// <summary>
@@ -50,7 +70,15 @@ public class Maze
     /// </summary>
     public void MoveUp()
     {
-        // FILL IN CODE
+        // Index 2 represents Up
+        if (_mazeMap[(_currX, _currY)][2]) 
+        {
+            _currY--; // Move up 
+        }
+        else
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
     }
 
     /// <summary>
@@ -59,7 +87,15 @@ public class Maze
     /// </summary>
     public void MoveDown()
     {
-        // FILL IN CODE
+        // Index 3 represents Down
+        if (_mazeMap[(_currX, _currY)][3]) 
+        {
+            _currY++; // Move down 
+        }
+        else
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
     }
 
     public string GetStatus()

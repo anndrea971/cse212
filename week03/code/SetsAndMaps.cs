@@ -24,15 +24,14 @@ public static class SetsAndMaps
     /// <param name="words">An array of 2-character words (lowercase, no duplicates)</param>
     public static string[] FindPairs(string[] words)
     {
+        // TODO Problem 1 - ADD YOUR CODE HERE
         HashSet<string> seenWords = new HashSet<string>();
         List<string> pairs = new List<string>();
 
         foreach (string word in words)
         {
-            // Reverse the 2-character word
             string reversed = $"{word[1]}{word[0]}";
 
-            // Check if the reversed word is in our set, ignoring identical letter words
             if (seenWords.Contains(reversed) && word != reversed)
             {
                 pairs.Add($"{reversed} & {word}");
@@ -64,10 +63,9 @@ public static class SetsAndMaps
         {
             var fields = line.Split(",");
             
-            // Problem 2 - Check if the line has enough columns
+            // TODO Problem 2 - ADD YOUR CODE HERE
             if (fields.Length > 3)
             {
-                // The degree is in the 4th column (index 3). We use Trim() to clean up any extra spaces.
                 string degree = fields[3].Trim();
 
                 if (degrees.ContainsKey(degree))
@@ -102,7 +100,7 @@ public static class SetsAndMaps
     /// </summary>
     public static bool IsAnagram(string word1, string word2)
     {
-        // Problem 3 - Ignore spaces and case
+        // TODO Problem 3 - ADD YOUR CODE HERE
         word1 = word1.Replace(" ", "").ToLower();
         word2 = word2.Replace(" ", "").ToLower();
 
@@ -113,7 +111,6 @@ public static class SetsAndMaps
 
         var letterCounts = new Dictionary<char, int>();
 
-        // Tally up the letters in the first word
         foreach (char c in word1)
         {
             if (letterCounts.ContainsKey(c))
@@ -126,7 +123,6 @@ public static class SetsAndMaps
             }
         }
 
-        // Subtract the tallies using the second word
         foreach (char c in word2)
         {
             if (!letterCounts.ContainsKey(c) || letterCounts[c] == 0)
@@ -165,7 +161,11 @@ public static class SetsAndMaps
 
         var featureCollection = JsonSerializer.Deserialize<FeatureCollection>(json, options);
 
-        // Problem 5 - Format earthquake data
+        // TODO Problem 5:
+        // 1. Add code in FeatureCollection.cs to describe the JSON using classes and properties 
+        // on those classes so that the call to Deserialize above works properly.
+        // 2. Add code below to create a string out each place a earthquake has happened today and its magitude.
+        // 3. Return an array of these string descriptions.
         var summaries = new List<string>();
 
         if (featureCollection?.Features != null)
