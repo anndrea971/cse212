@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class BinarySearchTree : IEnumerable<int>
 {
@@ -81,6 +83,17 @@ public class BinarySearchTree : IEnumerable<int>
     private void TraverseBackward(Node? node, List<int> values)
     {
         // TODO Problem 3
+        if (node is not null)
+        {
+            // Traverse the right side first to get the largest values
+            TraverseBackward(node.Right, values);
+            
+            // Add the current node's value
+            values.Add(node.Data);
+            
+            // Traverse the left side last to get the smallest values
+            TraverseBackward(node.Left, values);
+        }
     }
 
     /// <summary>
